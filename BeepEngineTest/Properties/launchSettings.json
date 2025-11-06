@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BeepEngineTest": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

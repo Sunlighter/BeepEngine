@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sunlighter.BeepEngine\Sunlighter.BeepEngine.vcxproj">
+    </ProjectReference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CppPlatform Condition="'$(Platform)' == 'x86'">Win32</CppPlatform>
+    <CppPlatform Condition="'$(Platform)' != 'x86'">$(Platform)</CppPlatform>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(SolutionDir)$(CppPlatform)\$(ConfigurationName)\Sunlighter.BeepEngine.dll&quot; &quot;$(TargetDir)&quot;&#xD;&#xA;copy /Y &quot;$(SolutionDir)$(CppPlatform)\$(ConfigurationName)\Sunlighter.BeepEngine.pdb&quot; &quot;$(TargetDir)&quot;" />
+  </Target>
+
+</Project>
